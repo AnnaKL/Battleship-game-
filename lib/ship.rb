@@ -1,7 +1,7 @@
 class Ship
-  def placed?
-    true
-  end
+  # def placed?
+  #   true
+  # end
 
   def hit?
     true

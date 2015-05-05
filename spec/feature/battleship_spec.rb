@@ -1,21 +1,20 @@
 require 'board'
+require 'ship'
 
 feature 'As a player' do
   scenario 'I would like to place a ship in a board location' do
     ship = Ship.new
     board = Board.new
-    board.place ship
-    expect(board).to respond_to :place
-    expect(ship).to be_placed
+    board.place(ship, :A1)
+    expect(board.grid[:A1]).to eq ship
   end
 
-  scenario 'I would like to fire at the ship' do
+
+  scenario 'I would like to know if I have hit or miss a ship' do
     ship = Ship.new
     board = Board.new
-    game = Game.new
-    board.place ship
-    game.fire
-    expect(ship).to be_hit
+    board.place(ship, :A2)
+    expect{board.fire :A2}.to raise_error 'Hit!'
   end
 
 end
